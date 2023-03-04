@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get 'postimages/show'
   resources :post_images, only: [:new, :create, :index, :show, :destroy]
   
-  # get 'usere/show'
-  # get 'usere/edit'
-  resources :users, only: [:show,:edit]
+  # get 'users/show'
+  # get 'users/edit'
+  resources :users, only: [:show,:edit, :update]
 end
