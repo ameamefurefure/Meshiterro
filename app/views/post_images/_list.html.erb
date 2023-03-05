@@ -1,0 +1,15 @@
+<!--部分テンプレートのため、@post_images→post_imagesに-->
+<% post_images.each do |post_image| %>
+<div>
+  <%= link_to post_image_path(post_image.id) do %>
+    <%= image_tag post_image.get_image %>
+  <% end %>
+  <p>投稿ユーザ画像:<%= image_tag post_image.user.get_profile_image(100,100) %></p>
+  <p>ショップ名:<%= post_image.shop_name %></p>
+  <p>説明:<%= post_image.caption %></p>
+  <o>ユーザーネーム:<%= post_image.user.name %></o>
+  <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
+</div>
+<% end %>
+
+<%= paginate post_images %>
