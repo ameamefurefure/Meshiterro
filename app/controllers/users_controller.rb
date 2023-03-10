@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   # 他のユーザーからのアクセスを制限
   before_action :is_matching_login_user, only: [:edit, :update]
 
@@ -16,7 +15,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id]) # @user = ユーザーの取得
     @user.update(user_params) #@user.ユーザーのアップデート
-    redirect_to user_path #redirect_to ユーザーの詳細ページへのパス
+    redirect_to user_path(@user.id) #redirect_to ユーザーの詳細ページへのパス
   end
 
   private
@@ -29,7 +28,8 @@ class UsersController < ApplicationController
   def is_matching_login_user
     user_id = params[:id].to_i
     unless user_id == current_user.id
-      redirect_to post_image_path
+      redirect_to post_images_path
     end
   end
+
 end
